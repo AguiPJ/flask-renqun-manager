@@ -1,4 +1,5 @@
 import random
+import time
 from json import loads
 
 from flask import request
@@ -17,3 +18,6 @@ def randomData():
 
 def req():
     return loads(request.get_data())
+
+
+def getTime(): return int(round(time.time() * 1000))

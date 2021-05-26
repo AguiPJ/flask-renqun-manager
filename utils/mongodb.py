@@ -3,10 +3,10 @@ from pymongo import MongoClient
 from config import MONGO_URL
 
 
-def Mongo(table='db'): return MongoClient(f'mongodb://{MONGO_URL}', serverSelectionTimeoutMS=5000)["pack"][table]
+def Mongo(table='db'): return MongoClient(f'mongodb://{MONGO_URL}', serverSelectionTimeoutMS=5000)["RenQunManager"][table]
 
 
-RenQunManagerDB = Mongo('RenQunManager')
+receiveTable = Mongo('jieshou')
 
 
 def find(DB: MongoClient, query=None, sort=None):
