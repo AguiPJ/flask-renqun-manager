@@ -4,12 +4,18 @@ from os.path import abspath
 from flask import Flask, render_template, send_from_directory
 from flask_cors import CORS
 
+from routers.backup import backup_opt
+from routers.historical import historical_opt
+from routers.location import location_opt
 from routers.receive import receive_opt
 from utils import randomData, randomDataStart, randomDataEnd, getTime
 
 # 注册flask app，路由蓝图以及解决跨域问题
 app = Flask(__name__, template_folder="dist")
-app.register_blueprint(blueprint=receive_opt, url_prefix='/jieshou')
+app.register_blueprint(blueprint=receive_opt, url_prefix='/receive')
+app.register_blueprint(blueprint=historical_opt, url_prefix='/historical')
+app.register_blueprint(blueprint=location_opt, url_prefix='/location')
+app.register_blueprint(blueprint=backup_opt, url_prefix='/backup')
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 

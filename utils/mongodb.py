@@ -6,7 +6,9 @@ from config import MONGO_URL
 def Mongo(table='db'): return MongoClient(f'mongodb://{MONGO_URL}', serverSelectionTimeoutMS=5000)["RenQunManager"][table]
 
 
-receiveTable = Mongo('jieshou')
+receiveTable = Mongo('receive')
+historicalTable = Mongo('historical')
+locationTable = Mongo('location')
 
 
 def find(DB: MongoClient, query=None, sort=None):
